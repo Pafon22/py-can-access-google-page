@@ -5,7 +5,8 @@ import app.main as main
 @pytest.mark.parametrize(
     "result_valid_url, result_has_internet, result_can_access",
     [
-        (True, True, "Accessible")
+        (True, True, "Accessible"),
+        (False, True, "Not accessible")
     ]
 )
 def test_can_access_google_page(
