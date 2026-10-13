@@ -6,7 +6,8 @@ import app.main as main
     "result_valid_url, result_has_internet, result_can_access",
     [
         (True, True, "Accessible"),
-        (False, True, "Not accessible")
+        (False, True, "Not accessible"),
+        (True, False, "Not accessible")
     ]
 )
 def test_can_access_google_page(
