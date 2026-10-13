@@ -11,15 +11,21 @@ import app.main as main
     ]
 )
 def test_can_access_google_page(
-    monkeypatch, result_valid_url, result_has_internet, result_can_access
-    ) -> None:
+    monkeypatch: pytest.MonkeyPatch,
+    result_valid_url: bool,
+    result_has_internet: bool,
+    result_can_access: str
+) -> None:
     url = "google"
-    def monkey_valid_google_url(url):
+
+    def monkey_valid_google_url(url: str) -> bool:
         return result_valid_url
 
-    def monkey_has_internet_connection():
+    def monkey_has_internet_connection() -> bool:
         return result_has_internet
 
     monkeypatch.setattr(main, "valid_google_url", monkey_valid_google_url)
-    monkeypatch.setattr(main, "has_internet_connection", monkey_has_internet_connection)
+    monkeypatch.setattr(
+        main, "has_internet_connection", monkey_has_internet_connection
+    )
     assert main.can_access_google_page(url) == result_can_access
